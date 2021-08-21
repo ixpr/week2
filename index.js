@@ -20,14 +20,7 @@ app
   .get('/login/', (req, res, next) => res.send('amalgamate.apart'))
   .get('/sample/', (req, res, next) => {
     const filePath = './function.js';
-    fs.readFileSync(filePath, {encoding: 'utf-8'}, function (err, data){
-      if (!err) {
-          res.send(data);
-          cb(data);
-      } else {
-         cb("False");
-      }
-    });
+    res.send(fs.readFileSync(filePath, {encoding: 'utf-8'}));
   })
   .use((req, res, next) => { req.errorMessage = 'Нет страницы'; next(); })
   .use(r => r.res.status(404).set(hu).send(r.errorMessage))
