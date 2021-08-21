@@ -11,10 +11,11 @@ Router
   .get(r => r.res.end('Привет мир!'));
 app
   .use(mw0)
-  .use(function workingSetter(req, res, next) {req.working = 'Работает, ура!'; next();})
+  .use(function workingSetter(req, res, next) {req.working = 'Главная страница'; next();})
   .use(x.static('.'))
   .use('/', Router)
-  .get('/first', (req, res, next) => {
+  .get('/login/', (req, res, next) => res.end('amalgamate.apart'))
+  .get('/first/', (req, res, next) => {
     req.app._router.stack.forEach(mw => console.log(mw.name))
     if (req.query.error == 'yes') return next();   
     res.send(req.working);
@@ -22,21 +23,6 @@ app
   .use((req, res, next) => { req.errorMessage = 'Всё ещё нет'; next(); })
   .use(r => r.res.status(404).set(hu).send(r.errorMessage))
   .use((e, r, rs, n) => rs.status(500).set(hu).send(`Ошибка: ${e}`))
-  /* .set('view engine', 'pug') */
   .set('x-powered-by', false);
 module.exports = h1(app)
   .listen(process.env.PORT || PORT, () => log(process.pid));
-
-
-/*
-
-для варианта с type="module"
-
-import { Server } from 'http';
-import x from 'express';
-
-и в предпоследней строке
-
-export default Server(app)
-
-*/
