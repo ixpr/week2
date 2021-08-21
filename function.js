@@ -1,3 +1,3 @@
 function task(x) {
-    return x.toUpperCase();
+    return x * Math.pow(this, 2);
 }
