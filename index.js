@@ -19,7 +19,7 @@ app
   .use('/', Router)
   .get('/login/', (req, res, next) => res.send('amalgamate.apart'))
   .get('/sample/', (req, res, next) => {
-    const filePath = 'function.js';
+    const filePath = './function.js';
     fs.readFileSync(filePath, {encoding: 'utf-8'}, function (err, data){
       if (!err) {
           res.send(data);
