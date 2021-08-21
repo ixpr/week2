@@ -1,8 +1,0 @@
-{
-	"headers": {
-		"/*": {
-			"X-Author": "amalgamate.apart",
-			"Access-Control-Allow-Origin": "*"
-		}
-	}
-}
